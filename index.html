@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SparkWash KE — Car Wash Nairobi</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Spark<span>Wash</span> KE</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#booking">Book</a></li>
+      <li><a href="#notification">Notifications</a></li>
+      <li><a href="#discount">Offers</a></li>
+      <li><a href="#location">Find Us</a></li>
+    </ul>
+    <a href="#booking" class="nav-cta">Book a wash</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#booking" onclick="toggleMenu()">Book a wash</a>
+  <a href="#notification" onclick="toggleMenu()">Notifications</a>
+  <a href="#discount" onclick="toggleMenu()">Offers</a>
+  <a href="#location" onclick="toggleMenu()">Find us</a>
+  <a href="#booking" class="mob-cta" onclick="toggleMenu()">Book now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✦ Nairobi's Premium Car Wash</div>
+      <h1>Your car deserves to <em>sparkle</em></h1>
+      <p>Professional hand car wash &amp; detailing in Nairobi. Book online, relax, and we'll let you know the moment your car is ready.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-primary">Book a wash now</a>
+        <a href="#services" class="btn-ghost">View services</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="num">500+</div>
+          <div class="lbl">Happy customers</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">4.9★</div>
+          <div class="lbl">Average rating</div>
+        </div>
+      </div>
+      <div class="discount-pill">
+        <div class="icon">🎉</div>
+        <div class="txt">
+          <strong>20% off your first wash</strong>
+          <span>First-time customers only — book online</span>
+        </div>
+      </div>
+      <div class="open-badge">
+        <div class="open-dot"></div>
+        Open now · Mon–Sun, 7am–7pm
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">What we offer</div>
+    <h2 class="section-title">Pick the right wash for your car</h2>
+    <p class="section-sub">All washes use eco-friendly products. Prices are in Kenyan Shillings.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon">💧</div>
+        <div class="svc-name">Quick Rinse</div>
+        <div class="svc-desc">Fast exterior rinse — perfect when you're in a hurry.</div>
+        <div class="svc-price">KSh 300 <span>/ wash</span></div>
+        <ul class="svc-features">
+          <li>Exterior hand wash</li>
+          <li>Rinse &amp; dry</li>
+          <li>Window wipe</li>
+        </ul>
+        <a href="#booking" class="book-svc-btn">Book this wash</a>
+      </div>
+      <div class="service-card popular">
+        <div class="svc-icon">✨</div>
+        <div class="svc-name">Signature Wash</div>
+        <div class="svc-desc">Our bestseller — thorough wash inside and out.</div>
+        <div class="svc-price">KSh 700 <span>/ wash</span></div>
+        <ul class="svc-features">
+          <li>Full exterior hand wash</li>
+          <li>Interior vacuum</li>
+          <li>Dashboard wipe</li>
+          <li>Tyre shine</li>
+          <li>Air freshener</li>
+        </ul>
+        <a href="#booking" class="book-svc-btn">Book this wash</a>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🌟</div>
+        <div class="svc-name">Full Detailing</div>
+        <div class="svc-desc">Deep clean inside and out — like new again.</div>
+        <div class="svc-price">KSh 2,500 <span>/ session</span></div>
+        <ul class="svc-features">
+          <li>Everything in Signature</li>
+          <li>Engine bay cleaning</li>
+          <li>Seat shampoo</li>
+          <li>Paint polish &amp; wax</li>
+          <li>Leather conditioning</li>
+        </ul>
+        <a href="#booking" class="book-svc-btn">Book this wash</a>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon">🚐</div>
+        <div class="svc-name">Van &amp; SUV Wash</div>
+        <div class="svc-desc">Signature wash scaled up for larger vehicles.</div>
+        <div class="svc-price">KSh 1,200 <span>/ wash</span></div>
+        <ul class="svc-features">
+          <li>Full exterior wash</li>
+          <li>Interior vacuum</li>
+          <li>All windows</li>
+          <li>Tyre shine × 4</li>
+        </ul>
+        <a href="#booking" class="book-svc-btn">Book this wash</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="booking-bg">
+  <div class="section-inner">
+    <div class="booking-wrap">
+      <div class="booking-info">
+        <div class="section-eyebrow">Online booking</div>
+        <h2 class="section-title">Book in under 2 minutes</h2>
+        <p>Choose your service, pick a time, and we'll be ready for you. You'll get a confirmation SMS and another one when your car is done.</p>
+        <div class="info-item">
+          <div class="info-icon">📱</div>
+          <div>
+            <h4>SMS confirmation</h4>
+            <p>We'll send a booking confirmation to your phone right away.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔔</div>
+          <div>
+            <h4>Ready alert</h4>
+            <p>You'll receive an SMS the moment your car is washed and ready for pickup.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🎉</div>
+          <div>
+            <h4>First-time discount</h4>
+            <p>First wash? Enter code <strong>SPARK20</strong> for 20% off automatically.</p>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <h3>Book your wash</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Your name</label>
+            <input type="text" id="fname" placeholder="e.g. James Kamau">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" placeholder="0712 345 678">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select id="service">
+            <option value="">Select a service...</option>
+            <option>Quick Rinse — KSh 300</option>
+            <option>Signature Wash — KSh 700</option>
+            <option>Full Detailing — KSh 2,500</option>
+            <option>Van &amp; SUV Wash — KSh 1,200</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Preferred date</label>
+            <input type="date" id="date">
+          </div>
+          <div class="form-group">
+            <label for="time">Preferred time</label>
+            <select id="time">
+              <option value="">Select time...</option>
+              <option>7:00 AM</option>
+              <option>8:00 AM</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="plate">Car plate number</label>
+          <input type="text" id="plate" placeholder="e.g. KBZ 123A">
+        </div>
+        <div class="form-group">
+          <label for="promo">Promo code (optional)</label>
+          <input type="text" id="promo" placeholder="e.g. SPARK20">
+        </div>
+        <div class="notify-row">
+          <input type="checkbox" id="smsNotify" checked>
+          <label for="smsNotify">📲 Send me an SMS when my car is ready for pickup</label>
+        </div>
+        <button class="submit-btn" onclick="submitBooking()">Confirm booking</button>
+        <div class="success-msg" id="successMsg">
+          <h4>🎉 Booking confirmed!</h4>
+          <p>You'll receive an SMS shortly. We'll notify you again when your car is sparkling and ready!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFICATION -->
+<section id="notification" class="notif-bg">
+  <div class="notif-inner" style="padding:72px 0">
+    <div class="notif-text">
+      <div class="section-eyebrow">How it works</div>
+      <h2 class="section-title">We keep you in the loop</h2>
+      <p class="section-sub">No more waiting around or guessing. We send real updates straight to your phone.</p>
+      <div class="notif-steps">
+        <div class="notif-step">
+          <div class="step-num">1</div>
+          <div>
+            <h4>You book online</h4>
+            <p>Fill in your details and pick a time. Takes less than 2 minutes.</p>
+          </div>
+        </div>
+        <div class="notif-step">
+          <div class="step-num">2</div>
+          <div>
+            <h4>Instant confirmation SMS</h4>
+            <p>You'll receive a booking confirmation with your date, time, and service.</p>
+          </div>
+        </div>
+        <div class="notif-step">
+          <div class="step-num">3</div>
+          <div>
+            <h4>Drop your car off</h4>
+            <p>Arrive at your booked time. Our team will be ready and waiting.</p>
+          </div>
+        </div>
+        <div class="notif-step">
+          <div class="step-num done">✓</div>
+          <div>
+            <h4>Ready alert — go anywhere</h4>
+            <p>We SMS you the moment your car is done. Go run errands, relax, come back when ready.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-mock">
+      <div style="font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-bottom:4px">Messages · SparkWash KE</div>
+      <div class="sms-bubble">
+        <strong>SparkWash KE</strong>
+        <p>Hi James! Your booking is confirmed for Thu 12 Jun at 10:00 AM. Service: Signature Wash. Plate: KBZ 123A. See you then! 🚗</p>
+        <div class="sms-time">Thu 10:01 AM · delivered</div>
+      </div>
+      <div class="sms-bubble">
+        <strong>SparkWash KE</strong>
+        <p>Update: We've started on your car. Estimated time: 30–40 mins. Sit back and relax! ✨</p>
+        <div class="sms-time">Thu 10:18 AM · delivered</div>
+      </div>
+      <div class="sms-bubble right">
+        <strong>You</strong>
+        <p>Thanks, I'm at the nearby café!</p>
+        <div class="sms-time w">Thu 10:19 AM</div>
+      </div>
+      <div class="sms-bubble" style="background:#E1F5EE">
+        <strong style="color:#085041">SparkWash KE 🎉</strong>
+        <p style="color:#085041">Your car is DONE! Sparkling and ready for pickup. KBZ 123A is waiting for you. See you soon! 💧</p>
+        <div class="sms-time">Thu 10:52 AM · delivered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOUNT -->
+<section id="discount" class="discount-section">
+  <div class="section-inner">
+    <div class="discount-wrap">
+      <div class="discount-badge-big">
+        <div class="pct">20%</div>
+        <div class="off">OFF</div>
+        <div class="lbl">First-time customers</div>
+      </div>
+      <div class="discount-content">
+        <h2>First wash? You deserve a treat.</h2>
+        <p>We want your first experience with SparkWash KE to be memorable. Use code <strong>SPARK20</strong> when booking online and get 20% off your first wash — any service.</p>
+        <div class="how-to">
+          <div class="how-step"><div class="dot">1</div> Book online via this website</div>
+          <div class="how-step"><div class="dot">2</div> Enter code <strong>SPARK20</strong> in the promo field</div>
+          <div class="how-step"><div class="dot">3</div> Your discount applies automatically at the wash</div>
+        </div>
+        <a href="#booking" class="get-discount-btn">Claim my 20% off →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location" class="location-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Find us</div>
+    <h2 class="section-title">We're easy to get to</h2>
+    <p class="section-sub">Centrally located in Nairobi — easy to drop off on your way to work or while running errands.</p>
+    <div class="location-grid">
+      <div class="map-placeholder">
+        <div class="map-icon">📍</div>
+        <p>SparkWash KE, Westlands, Nairobi<br>Near <strong>ABC Place Mall</strong></p>
+        <a href="https://maps.google.com/?q=Westlands+Nairobi" target="_blank">Open in Google Maps</a>
+      </div>
+      <div class="location-details">
+        <div class="loc-item">
+          <div class="loc-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>Waiyaki Way, Westlands<br>Nairobi, Kenya<br>(opposite ABC Place Mall, near Shell petrol station)</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">📞</div>
+          <div>
+            <h4>Contact us</h4>
+            <p>Phone: <a href="tel:+254700000000" style="color:var(--blue);text-decoration:none">+254 700 000 000</a><br>
+            WhatsApp: <a href="https://wa.me/254700000000" style="color:var(--green);text-decoration:none">Chat on WhatsApp</a><br>
+            Email: hello@sparkwashke.co.ke</p>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">🕐</div>
+          <div>
+            <h4>Opening hours</h4>
+            <div class="hours-grid">
+              <div class="hour-row"><span class="day">Monday – Friday</span><span class="time">7:00 AM – 7:00 PM</span></div>
+              <div class="hour-row"><span class="day">Saturday</span><span class="time">7:00 AM – 6:00 PM</span></div>
+              <div class="hour-row"><span class="day">Sunday</span><span class="time">8:00 AM – 4:00 PM</span></div>
+              <div class="hour-row"><span class="day">Public holidays</span><span class="time">8:00 AM – 3:00 PM</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Happy customers</div>
+    <h2 class="section-title">What Nairobians are saying</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked online, dropped the car, went to the café next door. Got an SMS saying it was done — exactly 35 minutes. Car looked brand new. Will be back every week!"</p>
+        <div class="testi-author">
+          <div class="avatar">JK</div>
+          <div>
+            <div class="name">James Kamau</div>
+            <div class="role">Westlands, Nairobi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Used the promo code for my first wash — got 20% off. The team was friendly and the full detailing made my old car look like it just left the showroom. Highly recommend."</p>
+        <div class="testi-author">
+          <div class="avatar">AW</div>
+          <div>
+            <div class="name">Aisha Wanjiru</div>
+            <div class="role">Kileleshwa, Nairobi</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"The SMS notification system is a game changer. No more sitting in the hot sun waiting. I just run errands and they ping me when it's ready. SparkWash is the future."</p>
+        <div class="testi-author">
+          <div class="avatar">PM</div>
+          <div>
+            <div class="name">Peter Mwangi</div>
+            <div class="role">Parklands, Nairobi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready for a sparkling clean car?</h2>
+  <p>Book in 2 minutes. We'll do the rest — and let you know when it's done.</p>
+  <div class="cta-band-btns">
+    <a href="#booking" class="btn-primary">Book your wash now</a>
+    <a href="https://wa.me/254700000000" class="btn-ghost">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Spark<span>Wash</span> KE</div>
+        <p class="footer-desc">Nairobi's trusted car wash. Professional, fast, and eco-friendly. We wash, you relax — we'll let you know when it's done.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Quick Rinse</a></li>
+          <li><a href="#services">Signature Wash</a></li>
+          <li><a href="#services">Full Detailing</a></li>
+          <li><a href="#services">Van &amp; SUV</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#location">Find us</a></li>
+          <li><a href="#discount">First-time offer</a></li>
+          <li><a href="#booking">Book a wash</a></li>
+          <li><a href="#notification">How it works</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+254700000000">+254 700 000 000</a></li>
+          <li><a href="https://wa.me/254700000000">WhatsApp</a></li>
+          <li><a href="mailto:hello@sparkwashke.co.ke">Email us</a></li>
+          <li><a href="#location">Westlands, Nairobi</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SparkWash KE. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<button id="chat-fab" onclick="toggleChat()" aria-label="Open AI assistant">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.9.538 3.671 1.472 5.177L2.07 21.07a1 1 0 001.26 1.26l3.893-1.402A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 2a8 8 0 110 16A8 8 0 0112 4zm-3 7a1 1 0 100 2h6a1 1 0 100-2H9zm0 3a1 1 0 100 2h4a1 1 0 100-2H9z"/>
+  </svg>
+  <div id="chat-notif">1</div>
+</button>
+
+<div id="chat-window">
+  <div class="chat-head">
+    <div class="chat-head-avatar">💧</div>
+    <div class="chat-head-info">
+      <strong>Sparky — AI Assistant</strong>
+      <span>SparkWash KE · Usually replies instantly</span>
+    </div>
+    <button class="chat-head-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="quick-btns" id="quickBtns"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="chat-send" onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>
