@@ -1,51 +1,60 @@
-# SparkWash KE
+# SparkWash KE 🚗💧
+A modern car wash booking website built with HTML, CSS, and JavaScript.
 
-A landing page for SparkWash KE, a Nairobi-based car wash service. Includes a service menu, an online booking form, an SMS-notification explainer, a first-time-customer discount section, and an embedded AI chat widget ("Sparky") for quick FAQs and chat-based booking.
+🔗 **[Live Demo](https://car-wash-gilt.vercel.app/)**
 
-## Folder structure
+## Features
+* Responsive design for desktop and mobile
+* Online car wash booking form
+* Service pricing section
+* SMS notification workflow demonstration
+* First-time customer discount promotion
+* Interactive AI-powered customer support widget
+* WhatsApp and phone contact integration
+* Customer testimonials
+* Location and business hours information
 
-```
-sparkwash/
-│
+## Services
+* Quick Rinse
+* Signature Wash
+* Full Detailing
+* Van & SUV Wash
+
+## Technologies Used
+* HTML5
+* CSS3
+* JavaScript (Vanilla JS)
+* Google Fonts
+
+## Project Structure
+```text
+Car-Wash/
 ├── index.html
-├── README.md
-│
 ├── css/
-│   └── style.css        → all site + chat widget styles
-│
+│   └── style.css
 ├── js/
-│   ├── main.js           → mobile menu, booking form validation, date picker
-│   └── chat.js           → Sparky chat widget (FAQs + booking flow)
-│
-└── assets/
-    └── .gitkeep           → placeholder so the empty folder survives git
+│   └── app.js
+├── LICENSE
+└── README.md
 ```
 
-## Running it locally
+## Getting Started
+1. Clone the repository:
+```bash
+git clone https://github.com/manuelmuia321-droid/Car-Wash.git
+```
+2. Open `index.html` in your browser.
 
-No build step needed — it's plain HTML/CSS/JS. Two options:
+## Future Improvements
+* Backend booking system
+* Real SMS notifications
+* M-Pesa payments
+* Database integration
+* Admin dashboard
+* Real AI assistant integration
 
-1. **Quick look:** just double-click `index.html` to open it in your browser.
-2. **Better for active dev:** serve it with a local server so links and any future fetch calls behave like they would in production. If you're using VS Code, the "Live Server" extension does this with one click. Otherwise:
-   ```
-   python3 -m http.server 8000
-   ```
-   then visit `http://localhost:8000`.
+## Author
+Manuel Muia
 
-## What's in each file
-
-- **index.html** — page markup only. Loads `css/style.css` and both JS files.
-- **css/style.css** — combined styles for the main site and the chat widget, kept in one file since the project is small enough that a single stylesheet is easier to scan than several tiny ones.
-- **js/main.js** — non-chat page behavior: hamburger menu toggle, booking form validation/submission, setting the date picker's minimum date to today.
-- **js/chat.js** — the Sparky widget: FAQ keyword matching, the multi-step booking conversation, and the "connect with owner" call/WhatsApp buttons.
-- **assets/** — empty for now; this is where a real logo, favicon, or photos would go once you have them.
-
-## Known issues
-
-- In `js/chat.js`, the booking FAQ pattern reads `'book|appointment|reservgit push -u origin mainze|schedule'`. That middle fragment looks like a stray git command got pasted into the string at some point. `book`, `appointment`, and `schedule` still trigger the booking flow correctly, but that one keyword fragment is dead weight and should be cleaned up to just `reserve`.
-
-## Ideas for next steps
-
-- Wire the booking form and chat widget up to a real backend (or even just a Google Sheet via Apps Script) so bookings actually get stored somewhere instead of just showing a confirmation message.
-- Replace the simulated SMS messages with a real SMS API — Africa's Talking is the common choice for Kenya-based projects and has a free sandbox tier for testing.
-- Add real photos of the wash bay/team to `assets/` and swap them in for the emoji icons currently used as placeholders.
+## License
+This project is licensed under the [MIT License](LICENSE) — free to use, modify, and distribute, including commercially, as long as the original copyright notice is kept.
