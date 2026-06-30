@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — SparkWash KE</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="admin-login-wrap" id="loginScreen">
+  <div class="admin-login-card">
+    <div class="admin-login-logo">Spark<span>Wash</span> KE</div>
+    <div class="admin-login-sub">Owner dashboard — sign in to view bookings</div>
+    <div class="admin-login-error" id="loginError"></div>
+    <div class="form-group">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@sparkwashke.co.ke" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="admin-login-btn" id="loginBtn" onclick="handleLogin()">Sign in</button>
+  </div>
+</div>
+
+<!-- DASHBOARD (shown after auth) -->
+<div class="admin-bg" id="dashboard" style="display:none">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="admin-logo">Spark<span>Wash</span> KE · Admin</div>
+      <button class="admin-logout-btn" onclick="handleLogout()">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-stats" id="statsRow"></div>
+
+    <div class="admin-filters" id="filterRow">
+      <button class="admin-filter-btn active" data-status="all" onclick="setFilter('all')">All</button>
+      <button class="admin-filter-btn" data-status="new" onclick="setFilter('new')">New</button>
+      <button class="admin-filter-btn" data-status="confirmed" onclick="setFilter('confirmed')">Confirmed</button>
+      <button class="admin-filter-btn" data-status="in_progress" onclick="setFilter('in_progress')">In progress</button>
+      <button class="admin-filter-btn" data-status="done" onclick="setFilter('done')">Done</button>
+      <button class="admin-filter-btn" data-status="cancelled" onclick="setFilter('cancelled')">Cancelled</button>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="bookingsTable" style="display:none">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Service</th>
+            <th>Date &amp; time</th>
+            <th>Plate</th>
+            <th>Booked</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="bookingsBody"></tbody>
+      </table>
+      <div class="admin-loading" id="loadingRow">Loading bookings…</div>
+      <div class="admin-empty" id="emptyRow" style="display:none">No bookings match this filter yet.</div>
+    </div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script>
+var currentFilter = 'all';
+var allBookings = [];
+
+// ── Auth ──────────────────────────────────────────────────────────────────
+
+async function checkSession() {
+  var { data } = await supabaseClient.auth.getSession();
+  if (data.session) {
+    showDashboard();
+  } else {
+    showLogin();
+  }
+}
+
+async function handleLogin() {
+  var email = document.getElementById('loginEmail').value.trim();
+  var password = document.getElementById('loginPassword').value;
+  var btn = document.getElementById('loginBtn');
+  var errBox = document.getElementById('loginError');
+  errBox.style.display = 'none';
+
+  if (!email || !password) {
+    errBox.textContent = 'Please enter your email and password.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
+
+  var { error } = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
+
+  btn.disabled = false;
+  btn.textContent = 'Sign in';
+
+  if (error) {
+    errBox.textContent = 'Incorrect email or password.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  showDashboard();
+}
+
+async function handleLogout() {
+  await supabaseClient.auth.signOut();
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+}
+
+function showDashboard() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  loadBookings();
+}
+
+// Allow Enter key to submit login
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('loginPassword').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+  checkSession();
+});
+
+// ── Data loading ──────────────────────────────────────────────────────────
+
+async function loadBookings() {
+  document.getElementById('loadingRow').style.display = 'block';
+  document.getElementById('bookingsTable').style.display = 'none';
+  document.getElementById('emptyRow').style.display = 'none';
+
+  var { data, error } = await supabaseClient
+    .from('bookings')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  document.getElementById('loadingRow').style.display = 'none';
+
+  if (error) {
+    document.getElementById('emptyRow').textContent = 'Could not load bookings: ' + error.message;
+    document.getElementById('emptyRow').style.display = 'block';
+    return;
+  }
+
+  allBookings = data || [];
+  renderStats();
+  renderTable();
+}
+
+function renderStats() {
+  var counts = { all: allBookings.length, new: 0, confirmed: 0, in_progress: 0, done: 0, cancelled: 0 };
+  allBookings.forEach(function (b) {
+    if (counts[b.status] !== undefined) counts[b.status]++;
+  });
+
+  var statsRow = document.getElementById('statsRow');
+  statsRow.innerHTML = '';
+  var items = [
+    ['Total bookings', counts.all],
+    ['New', counts.new],
+    ['In progress', counts.in_progress],
+    ['Done', counts.done]
+  ];
+  items.forEach(function (item) {
+    var d = document.createElement('div');
+    d.className = 'admin-stat';
+    d.innerHTML = '<div class="n">' + item[1] + '</div><div class="l">' + item[0] + '</div>';
+    statsRow.appendChild(d);
+  });
+}
+
+function setFilter(status) {
+  currentFilter = status;
+  document.querySelectorAll('.admin-filter-btn').forEach(function (btn) {
+    btn.classList.toggle('active', btn.dataset.status === status);
+  });
+  renderTable();
+}
+
+function renderTable() {
+  var rows = currentFilter === 'all'
+    ? allBookings
+    : allBookings.filter(function (b) { return b.status === currentFilter; });
+
+  var tbody = document.getElementById('bookingsBody');
+  tbody.innerHTML = '';
+
+  if (rows.length === 0) {
+    document.getElementById('bookingsTable').style.display = 'none';
+    document.getElementById('emptyRow').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('bookingsTable').style.display = 'table';
+  document.getElementById('emptyRow').style.display = 'none';
+
+  rows.forEach(function (b) {
+    var tr = document.createElement('tr');
+
+    var bookedAt = new Date(b.created_at);
+    var bookedStr = bookedAt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }) +
+      ' · ' + bookedAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
+    tr.innerHTML =
+      '<td><div class="admin-cell-name">' + escapeHtml(b.name) + '</div><div class="admin-cell-sub">' + escapeHtml(b.phone) + '</div></td>' +
+      '<td>' + escapeHtml(b.service) + (b.promo_code ? '<div class="admin-cell-sub">Promo: ' + escapeHtml(b.promo_code) + '</div>' : '') + '</td>' +
+      '<td>' + escapeHtml(b.booking_date) + '<div class="admin-cell-sub">' + escapeHtml(b.booking_time) + '</div></td>' +
+      '<td>' + (b.plate ? escapeHtml(b.plate) : '—') + '</td>' +
+      '<td>' + bookedStr + '</td>' +
+      '<td></td>';
+
+    var statusTd = tr.lastElementChild;
+    var select = document.createElement('select');
+    select.className = 'status-select';
+    ['new', 'confirmed', 'in_progress', 'done', 'cancelled'].forEach(function (s) {
+      var opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s.replace('_', ' ');
+      if (s === b.status) opt.selected = true;
+      select.appendChild(opt);
+    });
+    select.onchange = function () { updateStatus(b.id, select.value); };
+    statusTd.appendChild(select);
+
+    tbody.appendChild(tr);
+  });
+}
+
+async function updateStatus(id, newStatus) {
+  var { error } = await supabaseClient.from('bookings').update({ status: newStatus }).eq('id', id);
+  if (error) {
+    alert('Could not update status: ' + error.message);
+    return;
+  }
+  var b = allBookings.find(function (x) { return x.id === id; });
+  if (b) b.status = newStatus;
+  renderStats();
+}
+
+function escapeHtml(str) {
+  var d = document.createElement('div');
+  d.textContent = str == null ? '' : String(str);
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>

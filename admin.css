@@ -1,0 +1,59 @@
+/* ADMIN — login screen */
+.admin-login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0D1B2A 0%,#0a3a6b 60%,#0077CC 100%);padding:20px}
+.admin-login-card{background:#fff;border-radius:var(--radius-xl);padding:36px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.admin-login-logo{font-size:22px;font-weight:800;color:var(--blue);margin-bottom:4px}
+.admin-login-logo span{color:var(--spark)}
+.admin-login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.admin-login-card .form-group{margin-bottom:16px}
+.admin-login-card label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.admin-login-card input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;outline:none}
+.admin-login-card input:focus{border-color:var(--blue)}
+.admin-login-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;font-family:inherit}
+.admin-login-btn:hover{background:var(--blue-dark)}
+.admin-login-btn:disabled{opacity:.6;cursor:default}
+.admin-login-error{background:#FDE8E8;color:#A12727;border:1px solid #F5B5B5;border-radius:10px;padding:10px 14px;font-size:13px;margin-bottom:16px;display:none}
+
+/* ADMIN — dashboard shell */
+.admin-bg{background:var(--bg);min-height:100vh}
+.admin-header{background:#fff;border-bottom:1px solid var(--border);padding:0 5vw}
+.admin-header-inner{max-width:1100px;margin:0 auto;height:64px;display:flex;align-items:center;justify-content:space-between}
+.admin-logo{font-size:20px;font-weight:800;color:var(--blue)}
+.admin-logo span{color:var(--spark)}
+.admin-logout-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.admin-logout-btn:hover{border-color:var(--blue);color:var(--blue)}
+.admin-main{max-width:1100px;margin:0 auto;padding:40px 5vw}
+
+/* stat cards */
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-bottom:32px}
+.admin-stat{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px}
+.admin-stat .n{font-size:28px;font-weight:800;color:var(--blue)}
+.admin-stat .l{font-size:12px;color:var(--muted);margin-top:2px}
+
+/* filter bar */
+.admin-filters{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.admin-filter-btn{background:#fff;border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.admin-filter-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* bookings table */
+.admin-table-wrap{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.admin-table{width:100%;border-collapse:collapse}
+.admin-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);padding:14px 16px;border-bottom:1px solid var(--border);background:var(--bg)}
+.admin-table td{padding:14px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.admin-table tr:last-child td{border-bottom:none}
+.admin-table tr:hover td{background:#FAFCFE}
+.admin-cell-name{font-weight:700}
+.admin-cell-sub{color:var(--muted);font-size:12px;margin-top:2px}
+.status-pill{display:inline-block;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;text-transform:capitalize}
+.status-new{background:#FEF3DC;color:#8A5B00}
+.status-confirmed{background:var(--blue-light);color:var(--blue)}
+.status-in_progress{background:#E6E0FB;color:#5B3FBE}
+.status-done{background:var(--green-light);color:#0F6E56}
+.status-cancelled{background:#FDE8E8;color:#A12727}
+.status-select{border:1px solid var(--border);border-radius:8px;padding:5px 8px;font-size:12px;font-family:inherit;background:#fff;color:var(--text)}
+.admin-empty{padding:60px 20px;text-align:center;color:var(--muted)}
+.admin-loading{padding:60px 20px;text-align:center;color:var(--muted)}
+
+@media(max-width:700px){
+  .admin-table-wrap{overflow-x:auto}
+  .admin-table{min-width:680px}
+}
